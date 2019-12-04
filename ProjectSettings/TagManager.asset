@@ -1,0 +1,85 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!78 &1
+TagManager:
+  serializedVersion: 2
+  tags:
+  - bomb
+  - enemy
+  - explosion
+  - rock
+  - monster
+  - missile
+  - hp
+  - missileTool
+  - wall
+  - Player2
+  - Player1
+  - randomMissile
+  - shield
+  - player1Missile
+  - player2Missile
+  layers:
+  - Default
+  - TransparentFX
+  - Ignore Raycast
+  - 
+  - Water
+  - UI
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  m_SortingLayers:
+  - name: background
+    uniqueID: 1888384637
+    locked: 1
+  - name: bomb
+    uniqueID: 1381538781
+    locked: 1
+  - name: explosion
+    uniqueID: 1160604751
+    locked: 0
+  - name: explosion
+    uniqueID: 2011733829
+    locked: 0
+  - name: player
+    uniqueID: 3268945449
+    locked: 1
+  - name: tools
+    uniqueID: 2804856469
+    locked: 0
+  - name: monster
+    uniqueID: 1961044789
+    locked: 0
+  - name: wall
+    uniqueID: 1117204765
+    locked: 0
+  - name: hedge
+    uniqueID: 3488027213
+    locked: 0
+  - name: Default
+    uniqueID: 0
+    locked: 1
