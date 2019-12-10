@@ -8,7 +8,10 @@ public class MissileLauncher : MonoBehaviour
     public GameObject thing;
 
     // Number of frame to instantiate
-    public int numOfFrame = 50;
+    public int numOfFrame = 500;
+
+    // AudioSource component of the object
+    AudioSource audioSource;
 
     // ArrayList of position of where to launch the missile
     ArrayList positionToLaunch = new ArrayList();
@@ -23,12 +26,20 @@ public class MissileLauncher : MonoBehaviour
         positionToLaunch.Add(new Vector3(-12.5f + 1.3f, -1.5f, 0f));
         positionToLaunch.Add(new Vector3(-12.5f + 1.3f, -3.5f, 0f));
         positionToLaunch.Add(new Vector3(-12.5f + 1.3f, -5.5f, 0f));
+
+        // Get the AudioSource component of the object
+        audioSource = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
     void Update()
     {
         numOfFrame -= 1;
+
+        if (numOfFrame == 150)
+        {
+            audioSource.Play();
+        }
 
         if (numOfFrame == 0)
         {
@@ -39,6 +50,8 @@ public class MissileLauncher : MonoBehaviour
             Instantiate(thing, position, Quaternion.Euler(0, 0, 0));
 
             numOfFrame = 500;
+
+            audioSource.Stop();
         }
     }
 }

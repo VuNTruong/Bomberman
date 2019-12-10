@@ -171,5 +171,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e1a6a1be737952648884faa6e1c61983, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  targettag: Player
+  target1tag: Player1
+  target2tag: Player1
   speed: 0.04

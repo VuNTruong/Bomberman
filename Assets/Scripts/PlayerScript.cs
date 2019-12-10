@@ -19,11 +19,14 @@ public class PlayerScript : MonoBehaviour
     // public access to the missileManager component
     public MissileManager missileManager;
 
-    // public access to the shieldManager component
-    public ShieldManagerPlayer1 shieldManager;
+    // public access to the isAliveManager control
+    public IsAliveManager isAliveManager;
 
     // Animator component of the object
     Animator anim;
+
+    // Audio component of the object
+    AudioSource audioSource;
 
     // public game object for the bomb
     public GameObject bomb;
@@ -42,6 +45,11 @@ public class PlayerScript : MonoBehaviour
 
         // Set initial state of the player to be alive
         anim.SetBool("isdie", false);
+
+        // Get the AudioSource component of the player
+        audioSource = GetComponent<AudioSource>();
+
+        isAliveManager.changeToTrue();
     }
 
     // Update is called once per frame
@@ -52,6 +60,9 @@ public class PlayerScript : MonoBehaviour
         {
             // Set the die animation to true
             anim.SetBool("isdie", true);
+
+            // Set the status of the IsAliveManager to false to end the game
+            isAliveManager.changeToFalse();
 
             // Destroy the player game object after that 1.5 seconds
             GameObject.Destroy(this.gameObject, 1f);
@@ -88,8 +99,12 @@ public class PlayerScript : MonoBehaviour
         // Place the bomb if the space button is pressed
         if (Input.GetKeyDown(KeyCode.Space))
         {
+            // Instantiate the bomb and the location of the player
             GameObject gameObject = (GameObject)Instantiate(bomb,
                 new Vector3(rb.position.x, rb.position.y, 0f), transform.rotation);
+
+            // Player the sound 
+            audioSource.Play();
         }
     }
 
@@ -107,22 +122,11 @@ public class PlayerScript : MonoBehaviour
             // If the numebr of frame got hit is 0, decrease the number of lives of the player
             if (numOfFrameGotHit == 0)
             {
-                // If the player is protected by shields, don't harm the player
-                if (shieldManager.getshield() > 0)
-                {
-                    // Decrement the number of shield
-                    shieldManager.decrementshield();
-                }
-                // If the player is not protected by shields, decrement lives
-                // of the player
-                else if (shieldManager.getshield() == 0)
-                {
-                    // Decrement the number of lives
-                    liveData.decrementLive();
+                // Decrement the number of lives
+                liveData.decrementLive();
 
-                    // Bring the number back to 20
-                    numOfFrameGotHit = 20;
-                }
+                // Bring the number back to 20
+                numOfFrameGotHit = 20;
             }
         }
     }
@@ -160,30 +164,12 @@ public class PlayerScript : MonoBehaviour
             // Destroy the object get collided with
             GameObject.Destroy(gameObject);
         }
-        if (gameObject.CompareTag("shield"))
-        {
-            // Increment the number of shields when collected
-            shieldManager.incrementshield();
-
-            // Destroy the the game object collided with
-            GameObject.Destroy(gameObject);
-        }
 
         if (gameObject.CompareTag("randomMissile"))
         {
-            // If the player is not protected by shields, decrement
-            // the live of the player
-            if (shieldManager.getshield() == 0)
+            for (int i = 0; i < 5; i++)
             {
-                for (int i = 0; i < 5; i++)
-                {
-                    liveData.decrementLive();
-                }
-            }
-            // If the player is protected by shields, don't harm the player
-            else
-            {
-                shieldManager.decrementshield();
+                liveData.decrementLive();
             }
         }
     }

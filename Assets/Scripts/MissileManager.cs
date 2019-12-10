@@ -10,7 +10,7 @@ using UnityEngine;
 // Note this is an instance of a ScriptableObject, not a MonoBehaviour
 public class MissileManager : ScriptableObject
 {
-    int missile = 0;
+    int missile = 10;
 
     // Methods to allow other scripts to increment and access the count.
     public void incrementMissile()

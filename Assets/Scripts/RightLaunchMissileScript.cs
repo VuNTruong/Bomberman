@@ -17,6 +17,10 @@ public class RightLaunchMissileScript : MonoBehaviour
     float missileX;
     float missileY;
 
+    // public access to the LiveManager of the opponent
+    public LivesManager liveManagerPlayer1;
+    public LivesManagerPlayer2 liveManagerPlayer2;
+
     // Tag of the opponent 
     public string opponentTag = "";
 
@@ -65,14 +69,28 @@ public class RightLaunchMissileScript : MonoBehaviour
         // If the missile collided with the opponent, it will explode
         if (gameObject.CompareTag(opponentTag))
         {
-            // Instantiate the explosion game object
-            Instantiate(explosion, new Vector3(missileX, missileY, 0), Quaternion.Euler(0, 0, 0));
+            if (opponentTag == "Player1")
+            {
+                // Instantiate the explosion game object
+                Instantiate(explosion, new Vector3(missileX, missileY, 0), Quaternion.Euler(0, 0, 0));
 
-            // Destroy the game object collided with
-            GameObject.Destroy(gameObject);
+                // Decrement live from the player
+                liveManagerPlayer1.decrementLive();
 
-            // Destroy the game object itself
-            GameObject.Destroy(this.gameObject);
+                // Destroy the game object itself
+                GameObject.Destroy(this.gameObject);
+            }
+            else if (opponentTag == "Player2")
+            {
+                // Instantiate the explosion game object
+                Instantiate(explosion, new Vector3(missileX, missileY, 0), Quaternion.Euler(0, 0, 0));
+
+                // Decrement live from the player
+                liveManagerPlayer2.decrementLive();
+
+                // Destroy the game object itself
+                GameObject.Destroy(this.gameObject);
+            }
         }
 
         // If the missile collided with the wall, it will explode

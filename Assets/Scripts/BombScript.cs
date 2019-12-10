@@ -13,19 +13,43 @@ public class BombScript : MonoBehaviour
     public GameObject explosionHorizontal;
     public GameObject explosionVertical;
 
+    // public access to the BombExplosion object which is used to interact between bomb and explosion
+    public BombAndExplosion bombAndExplosion;
+
     // Position of the bomb
     float bombX = 0f;
     float bombY = 0f;
+
+    // String to know which does the bomb belongs to
+    string thisBombBelongsTo = "";
 
     // ArrayList to contain position for the allowed x coordinate
     float [] allowedXCoordinate = new float[13];
 
     // ArrayList to contain position for the allowed y coordinate
-    float[] allowedYCoordinate = new float[5];
+    float[] allowedYCoordinate = new float[6];
 
     // Start is called before the first frame update
     void Start()
     {
+        // Get the player 1 game object
+        GameObject player1Object = GameObject.FindWithTag("Player1");
+
+        // Get the player 2 game object
+        GameObject player2Object = GameObject.FindWithTag("Player2");
+
+        if (this.transform.position == player1Object.transform.position)
+        {
+            thisBombBelongsTo = "Player1";
+        }
+        else if (this.transform.position == player2Object.transform.position)
+        {
+            thisBombBelongsTo = "Player2";
+        }
+
+        // Bring the information related to who created the bomb to the explosion
+        bombAndExplosion.setOwner(thisBombBelongsTo);
+
         bombX = this.transform.position.x;
         bombY = this.transform.position.y;
 
@@ -56,6 +80,7 @@ public class BombScript : MonoBehaviour
         allowedYCoordinate[2] = -0.5f;
         allowedYCoordinate[3] = -2.5f;
         allowedYCoordinate[4] = -4.5f;
+        allowedYCoordinate[5] = -6.5f;
     }
 
     // Update is called once per frame
@@ -76,11 +101,9 @@ public class BombScript : MonoBehaviour
                 Debug.Log("Vertical");
             }
             else
-            {
-                //Debug.Log("Bomb X " + bombX);
-                //Debug.Log("Allowed X coordinate " + allowedXCoordinate[1]);
+            { 
                 // The loop run to determine wether to make the bomb explode 4 ways or not
-                for (int j = 0; j < 5; j++)
+                for (int j = 0; j < 6; j++)
                 {
                     for (int i = 0; i < 13; i++)
                     {
@@ -109,7 +132,7 @@ public class BombScript : MonoBehaviour
                             }
 
                             // Instantiate the vertical explosion
-                            // If the bomb is placed less than 0.06f away from the rock in the
+                            // If the bomb is placed less than 0.6f away from the rock in the
                             // vertical direction, only the vertical explosion should be
                             // instantiate
                             else if (allowedYCoordinate[j] + 0.6f > bombY || allowedYCoordinate[j] + 1.4f < bombY)

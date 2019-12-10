@@ -55,12 +55,14 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\Scripts\BombAndExplosion.cs" />
      <Compile Include="Assets\Scripts\BombScript.cs" />
      <Compile Include="Assets\Scripts\CreateBombs.cs" />
      <Compile Include="Assets\Scripts\DoneLoading.cs" />
      <Compile Include="Assets\Scripts\ExplosionScript.cs" />
      <Compile Include="Assets\Scripts\HpCreator.cs" />
      <Compile Include="Assets\Scripts\HPScript.cs" />
+     <Compile Include="Assets\Scripts\IsAliveManager.cs" />
      <Compile Include="Assets\Scripts\KeyboardEvent.cs" />
      <Compile Include="Assets\Scripts\KeyboardEventPlayer2.cs" />
      <Compile Include="Assets\Scripts\LeftExplosionScript.cs" />
@@ -81,12 +83,20 @@
      <Compile Include="Assets\Scripts\PlayerScript.cs" />
      <Compile Include="Assets\Scripts\RandomMissileScript.cs" />
      <Compile Include="Assets\Scripts\RightLaunchMissileScript.cs" />
-     <Compile Include="Assets\Scripts\ShieldCounterPlayer1.cs" />
-     <Compile Include="Assets\Scripts\ShieldCounterPlayer2.cs" />
-     <Compile Include="Assets\Scripts\ShieldCreator.cs" />
-     <Compile Include="Assets\Scripts\ShieldManagerPlayer1.cs" />
-     <Compile Include="Assets\Scripts\ShieldManagerPlayer2.cs" />
-     <Compile Include="Assets\Scripts\SwitchScene.cs" />
+     <Compile Include="Assets\Scripts\ScoreCounterPlayer1.cs" />
+     <Compile Include="Assets\Scripts\ScoreCounterPlayer2.cs" />
+     <Compile Include="Assets\Scripts\ScoreManagerPlayer1.cs" />
+     <Compile Include="Assets\Scripts\ScoreManagerPlayer2.cs" />
+     <Compile Include="Assets\UIScript\PlayGameButtonScript.cs" />
+     <Compile Include="Assets\UIScript\ResultScreenButtons.cs" />
+     <Compile Include="Assets\UIScript\ScoreShowingResultPlayer1.cs" />
+     <Compile Include="Assets\UIScript\ScoreShowingResultPlayer2.cs" />
+     <Compile Include="Assets\UIScript\SwitchSceneFrom3.cs" />
+     <Compile Include="Assets\UIScript\SwitchSceneFromGameToResult.cs" />
+     <Compile Include="Assets\UIScript\SwitchSceneFromInstruction1To2.cs" />
+     <Compile Include="Assets\UIScript\SwitchSceneFromSpashToWelcome.cs" />
+     <Compile Include="Assets\UIScript\SwitchSceneInstructionFrom2To3.cs" />
+     <Compile Include="Assets\UIScript\WhoWins.cs" />
  <Reference Include="Unity.Timeline.Editor">
  <HintPath>C:/Users/Administrator/Documents/Bomberman/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
  </Reference>

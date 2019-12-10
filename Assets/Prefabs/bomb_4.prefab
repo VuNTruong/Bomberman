@@ -101,6 +101,7 @@ MonoBehaviour:
     type: 3}
   explosionVertical: {fileID: 5776342257533161898, guid: 82298b71c7e89db409f016ac9ac943bd,
     type: 3}
+  bombAndExplosion: {fileID: 11400000, guid: fbbee53e63408c244acacff4e319f39f, type: 2}
 --- !u!60 &-2351141514205049130
 PolygonCollider2D:
   m_ObjectHideFlags: 0

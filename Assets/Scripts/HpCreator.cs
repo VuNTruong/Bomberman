@@ -18,7 +18,7 @@ public class HpCreator : MonoBehaviour
     {
         for (int i = 0; i < 14; i++)
         {
-            for (int j = 0; j < 6; j++)
+            for (int j = 0; j < 5; j++)
             {
                 positionToCreate.Add(new Vector3(-12.5f + 2 * i, 4.5f - 2 * j, 0f));
             }
@@ -33,7 +33,7 @@ public class HpCreator : MonoBehaviour
         if (numOfFrame == 0)
         {
             // Position to instantiate
-            Vector3 position = (Vector3)positionToCreate[Random.Range(0, 83)];
+            Vector3 position = (Vector3)positionToCreate[Random.Range(0, 70)];
 
             // Instantiate
             Instantiate(thing, position, Quaternion.Euler(0, 0, 0));

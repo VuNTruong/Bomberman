@@ -14,7 +14,7 @@ public class MissileCounterPlayer2 : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        missileData.setMissile(0);
+        missileData.setMissile(10);
 
         // Get the Text component of this object
         missileCount = GetComponent<Text>();
